@@ -2,7 +2,7 @@
 # @Author: Duc Khai Tong
 # @Date:   2020-04-15 16:40:37
 # @Last modified by:   Duc Khai Tong
-# @Last Modified time: 2020-04-17 00:12:50
+# @Last Modified time: 2020-04-17 00:56:29
 
 import numpy as np 
 import pandas as pd 
@@ -57,7 +57,6 @@ for _ in range(epochs):
 	loss = -np.sum(np.multiply(expectedOutput, np.log(predictedOutput)) + np.multiply(1 - expectedOutput, np.log(1 - predictedOutput)))
 	print(loss)
 	
-
 	# # Updating weights and biases
 	# outputWeights -= hiddenLayerOutput.T.dot(predictedOutput - expectedOutput) * learningRate  
 	# outputBias -= np.sum(predictedOutput - expectedOutput, axis=0, keepdims=True) * learningRate
