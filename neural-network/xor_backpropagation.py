@@ -2,7 +2,7 @@
 # @Author: Duc Khai Tong
 # @Date:   2020-04-15 16:40:37
 # @Last modified by:   Duc Khai Tong
-# @Last Modified time: 2020-04-17 00:56:29
+# @Last Modified time: 2020-04-30 00:37:54
 
 import numpy as np 
 import pandas as pd 
@@ -53,7 +53,7 @@ for _ in range(epochs):
 	outputLayerActivation = np.dot(hiddenLayerOutput, outputWeights) + outputBias
 	predictedOutput = sigmoid(outputLayerActivation)
 
-	# Backpropagation vs Logistic loss function
+	# Backpropagation with Logistic loss function
 	loss = -np.sum(np.multiply(expectedOutput, np.log(predictedOutput)) + np.multiply(1 - expectedOutput, np.log(1 - predictedOutput)))
 	print(loss)
 	
@@ -64,7 +64,7 @@ for _ in range(epochs):
 	# hiddenBias += np.sum( (((predictedOutput - expectedOutput).dot(outputWeights.T)) * hiddenLayerOutput), axis=0, keepdims=True ) * learningRate
 
 
-	# Backpropagation vs MSE loss function
+	# Backpropagation with MSE loss function
 	error = expectedOutput - predictedOutput
 	derivative_predictedOutput = error * sigmoid_derivative(predictedOutput)
 	error_hiddenLayer = derivative_predictedOutput.dot(outputWeights.T)
@@ -88,6 +88,6 @@ print(*outputBias)
 print("\nOutput from neural network after 10,000 epochs: ",end='')
 print(*predictedOutput)
 
-plt.show()
+# plt.show()
 
 

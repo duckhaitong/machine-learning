@@ -2,7 +2,7 @@
 # @Author: Duc Khai Tong
 # @Date:   2020-04-17 01:36:35
 # @Last modified by:   Duc Khai Tong
-# @Last Modified time: 2020-04-20 01:11:27
+# @Last Modified time: 2020-05-02 00:59:54
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -39,8 +39,9 @@ class NeuralNetwork:
 		# activation
 		A = [X]
 
+
 		# feedforward
-		output = A[-1]
+		output = A[0]
 		for i in range(0, len(self.layers) - 1):
 			output = sigmoid(output.dot(self.W[i]) + (self.B[i].T))
 			A.append(output)
@@ -68,8 +69,6 @@ class NeuralNetwork:
 			self.W[i] -= self.alpha * dW[i]
 			self.B[i] -= self.alpha * dB[i]
 
-		return A[-1]
-
 
 	# predict
 	def predict(self, X):
@@ -89,8 +88,6 @@ class NeuralNetwork:
 				loss = self.calculate_loss(X, y)
 				print("Epoch {}, loss {}".format(epoch, loss))
 
-			if epoch == epochs - 1:
-				print(self.partial_fit(X, y))
 
 if __name__ == "__main__":
 	# read dataset
@@ -102,4 +99,5 @@ if __name__ == "__main__":
 	p = NeuralNetwork([x.shape[1], 2, 1], 0.1)
 	p.fit(x, y, 10000, 100)
 	print(p)
+	print(p.predict(x))
 	
